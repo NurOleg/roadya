@@ -9,7 +9,6 @@ use App\Http\Requests\Placemark\UpdatePlacemarkRequest;
 use App\Models\Image;
 use App\Models\Placemark;
 use App\Models\Tag;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\Paginator;

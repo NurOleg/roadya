@@ -43,7 +43,7 @@ class ReviewController extends BaseApiController
     public function store(StoreReviewRequest $request): JsonResponse
     {
         $review = $this->service->store($request->validated());
-        return $this->successResponse($review, 'Отзыв успешно создано.', Response::HTTP_CREATED);
+        return $this->successResponse($review, 'Отзыв успешно создан.', Response::HTTP_CREATED);
     }
 
     /**

@@ -9,7 +9,7 @@ use App\Http\Requests\Review\UpdateReviewRequest;
 use App\Models\Image;
 use App\Models\Review;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;;
 use Illuminate\Support\Facades\Storage;
 
 class ReviewService
@@ -66,9 +66,9 @@ class ReviewService
 
     /**
      * @param ListReviewRequest $request
-     * @return LengthAwarePaginator
+     * @return Paginator
      */
-    public function list(ListReviewRequest $request): LengthAwarePaginator
+    public function list(ListReviewRequest $request): Paginator
     {
         $reviewsQuery = Review::with('images');
 
