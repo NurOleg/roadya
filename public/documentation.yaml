@@ -4,7 +4,7 @@ info:
   description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
   version: 0.1.9
 servers:
-  - url: http://185.105.225.38/v1
+  - url: http://185.105.225.38/api
     description: Poduction server
   #- url: http://staging-api.example.com
   #  description: Optional server description, e.g. Internal staging server for testing
