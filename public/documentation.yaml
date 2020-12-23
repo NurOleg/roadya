@@ -324,6 +324,83 @@ paths:
                 data: []
     # -------------- DELETE PLACEMARK END ---------------------- #
 
+        # -------------- GET PLACEMARK START ---------------------- #
+    get:
+      summary: Подробная информация о заведении
+      parameters:
+        - in: path
+          name: id   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: ID заведения
+      responses:
+        '200': # status code
+          description: OK
+          content:
+            application/json:
+              example:
+                status: success
+                message: ''
+                data: {
+                  "id": 2,
+                  "name": "Test placemark",
+                  "address": "Санкт-Петербург; Невский, 11",
+                  "url": "https://test.com",
+                  "phone": "+79112223344",
+                  "instagram": "o.nurutdinov",
+                  "telegram": "o.nurutdinov",
+                  "whatsapp": "+79112223344",
+                  "vk": "https://vk.com/id1748231",
+                  "viber": "+79112223344",
+                  "point": [
+                      37.774929,
+                      -122.419415
+                  ],
+                  "created_at": "2020-12-15T14:22:16.000000Z",
+                  "updated_at": "2020-12-15T14:22:16.000000Z",
+                  "user_id": 1,
+                  "latitude": 37.774929,
+                  "longitude": -122.419415,
+                  "reviews_rating": "4.5000",
+                  "images": [
+                    {
+                      "id": 1,
+                      "path": "/storage/placemarks/2/PHCADfPw2iIyOGLhg1biDNLqaPGMAEQk5fLzYgF9.jpeg",
+                      "imagable_type": "App\\Models\\Placemark",
+                      "imagable_id": 2
+                    },
+                    {
+                      "id": 2,
+                      "path": "/storage/placemarks/2/fTwdUAqIecjA19jXH15TBpL1qUHXW106ls05kYKT.jpeg",
+                      "imagable_type": "App\\Models\\Placemark",
+                      "imagable_id": 2
+                    }
+                  ],
+                  "tags": [
+                    {
+                      "id": 2,
+                      "code": "interesting",
+                      "name": "Интересное",
+                      "pivot": {
+                        "placemark_id": 2,
+                        "tag_id": 2
+                      }
+                    },
+                    {
+                      "id": 5,
+                      "code": "big_transport_parking",
+                      "name": "Парковка для большого транспорта",
+                      "pivot": {
+                        "placemark_id": 2,
+                        "tag_id": 5
+                      }
+                    }
+                  ]
+                }
+    # -------------- GET PLACEMARK END ---------------------- #
+
 components:
   schemas:
     Placemark:
