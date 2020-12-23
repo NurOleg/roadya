@@ -9,8 +9,8 @@ use App\Http\Requests\Review\UpdateReviewRequest;
 use App\Models\Image;
 use App\Models\Review;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Pagination\Paginator;;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\Pagination\Paginator;
 
 class ReviewService
 {
@@ -86,7 +86,7 @@ class ReviewService
 
         $count = $request->filled('count') ? $request->get('count') : 15;
 
-        return $reviewsQuery->paginate($count);
+        return $reviewsQuery->simplePaginate($count);
     }
 
     /**
