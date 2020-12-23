@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-
 use App\Http\Requests\Tag\ListTagRequest;
 use App\Models\Placemark;
 use App\Models\Tag;

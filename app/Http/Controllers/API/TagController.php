@@ -13,7 +13,10 @@ class TagController extends BaseApiController
      */
     private ?TagService $service = null;
 
-    public function _construct(TagService $service)
+    /**
+     * @param TagService $service
+     */
+    public function __construct(TagService $service)
     {
         $this->service = $service;
     }

@@ -22,7 +22,7 @@ class ReviewController extends BaseApiController
      */
     private ?ReviewService $service = null;
 
-    public function _construct(ReviewService $service)
+    public function __construct(ReviewService $service)
     {
         $this->service = $service;
     }
