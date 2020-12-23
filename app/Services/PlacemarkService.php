@@ -12,6 +12,7 @@ use App\Models\Tag;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,9 +91,9 @@ class PlacemarkService
 
     /**
      * @param ListPlacemarkRequest $request
-     * @return LengthAwarePaginator
+     * @return Paginator
      */
-    public function list(ListPlacemarkRequest $request): LengthAwarePaginator
+    public function list(ListPlacemarkRequest $request): Paginator
     {
         $placemarksQuery = Placemark::with(['images', 'rating', 'tags']);
 
@@ -103,7 +104,7 @@ class PlacemarkService
 
         $count = $request->filled('count') ? $request->get('count') : 15;
 
-        $placemarks = $placemarksQuery->paginate($count);
+        $placemarks = $placemarksQuery->simplePaginate($count);
 
         foreach ($placemarks->items() as $placemark) {
             $placemark->point = [$placemark->latitude, $placemark->longitude];
