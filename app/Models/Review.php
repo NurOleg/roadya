@@ -11,7 +11,7 @@ class Review extends Model
 {
     use HasFactory;
 
-    public $fillable = ['active', 'text', 'rating', 'user_id', 'placemark_id'];
+    protected $fillable = ['active', 'text', 'rating', 'user_id', 'placemark_id'];
 
     /**
      * @return BelongsTo

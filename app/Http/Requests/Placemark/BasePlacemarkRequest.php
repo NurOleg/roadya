@@ -37,7 +37,7 @@ class BasePlacemarkRequest extends FormRequest
             'viber'     => 'string',
             'point'     => 'string',
             'tags'      => 'array',
-            'tags.*'    => 'string|in:' . implode(',', Placemark::TAGS_BY_TYPES[$this->type]),
+            'tags.*'    => 'string|in:' . implode(',', Placemark::TAGS_BY_TYPES[$this->validationData()['type']]),
             'images.*'  => 'image'
         ];
     }

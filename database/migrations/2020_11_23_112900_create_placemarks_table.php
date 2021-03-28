@@ -23,6 +23,7 @@ class CreatePlacemarksTable extends Migration
             $table->string('instagram');
             $table->string('telegram');
             $table->string('whatsapp');
+            $table->longText('description');
             $table->string('vk');
             $table->string('viber');
             $table->point('point');

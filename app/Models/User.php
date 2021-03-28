@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,7 +11,18 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
+
+    public const TRAVELLER_TYPE = 'traveller';
+    public const COMPANY_TYPE = 'company';
+    public const IP_TYPE = 'individual';
+    public const ADMIN_TYPE = 'individual';
+
+    public const ADMINPANEL_USERS = [
+        self::COMPANY_TYPE,
+        self::IP_TYPE,
+        self::ADMIN_TYPE
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +33,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
+        'phone'
     ];
 
     /**
@@ -40,4 +55,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return HasMany
+     */
+    public function providers(): HasMany
+    {
+        return $this->hasMany(Provider::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function placemarks(): HasMany
+    {
+        return $this->hasMany(Placemark::class);
+    }
 }

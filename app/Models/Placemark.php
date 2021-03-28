@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -27,47 +28,55 @@ class Placemark extends Model
         self::TYPE_CAMPING,
     ];
 
+    public const TYPES_NAMES = [
+        self::TYPE_CAFE => 'Кафе',
+        self::TYPE_HOTEL => 'Отель',
+        self::TYPE_CAR_SERVICE => 'Автоцентр',
+        self::TYPE_PLACE => 'Места',
+        self::TYPE_CAMPING => 'Кемпинг',
+    ];
+
     public const TAGS_BY_TYPES = [
         self::TYPE_CAFE        => [
-            'family',
-            'interesting',
-            'inexpensive',
-            'alcohol',
-            'big_transport_parking',
-            'cashless',
-            'togo',
-            'for_truckers'
+            'family' => 'Семейное',
+            'interesting' => 'Интересное',
+            'inexpensive' => 'Недорогое',
+            'alcohol' => 'Алкоголь',
+            'big_transport_parking' => 'Парковка для большого транспорта',
+            'cashless' => 'Безналичная оплата',
+            'togo' => 'С собой',
+            'for_truckers' => 'Для дальнобойщиков'
         ],
         self::TYPE_HOTEL       => [
-            'family',
-            'couples',
-            'inexpensive',
-            '24-hour_front_desk',
-            'shower'
+            'family' => 'Семейный',
+            'couples' => 'Для пар',
+            'inexpensive' => 'Недорогой',
+            '24-hour_front_desk' => 'Круглосуточная стойка регистрации',
+            'shower' => 'С душем'
         ],
         self::TYPE_CAR_SERVICE => [
-            'cargo',
-            'passenger',
-            'with_loader',
-            'moto',
-            'with_parts_store'
+            'cargo' => 'Грузовые',
+            'passenger' => 'Легковые',
+            'with_loader' => 'С эвакуатором',
+            'moto' => 'Мото',
+            'with_parts_store' => 'С магазином запчастей'
         ],
         self::TYPE_PLACE       => [
-            'family',
-            'free',
-            'inexpensive',
-            'thrill',
-            'user_marks'
+            'family' => 'Семейное',
+            'free' => 'Бесплатное',
+            'inexpensive' => 'Недорогое',
+            'thrill' => 'Захватывающее',
+            'user_marks' => 'Посетители рекомендуют'
         ],
         self::TYPE_CAMPING     => [
-            'family',
-            'interesting',
-            'inexpensive',
-            'great_view'
+            'family' => 'Семейный',
+            'interesting' => 'Интересный',
+            'inexpensive' => 'Недорогой',
+            'great_view' => 'Отличные виды'
         ],
     ];
 
-    public $fillable = [
+    protected $fillable = [
         'name',
         'address',
         'url',
@@ -78,7 +87,8 @@ class Placemark extends Model
         'vk',
         'viber',
         'point',
-        'user_id'
+        'user_id',
+        'type'
     ];
 
     protected $geometry = ['point'];
@@ -112,6 +122,14 @@ class Placemark extends Model
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     /**

@@ -20,37 +20,6 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 class PlacemarkService
 {
     /**
-     * @param array $data
-     * @return Placemark
-     */
-    public function store(array $data): Placemark
-    {
-        $data['point'] = DB::raw("ST_GeomFromText('POINT({$data['point']})')");
-
-        //auth()->user()->id
-        $placemark = Placemark::create(array_merge($data, ['user_id' => 1]));
-        $uploadedImages = [];
-
-        foreach ($data['images'] as $image) {
-            /** @var UploadedFile $image */
-            $path = $image->store('placemarks/' . $placemark->id);
-            $uploadedImages[] = new Image(['path' => $path]);
-        }
-
-        $placemark->images()->saveMany($uploadedImages);
-
-        if (!empty($data['tags'])) {
-            $tagCodesArray = $data['tags'];
-            $tagIds = Tag::whereIn('code', $tagCodesArray)->get(['id'])->toArray();
-            $placemark->tags()->attach($tagIds);
-        }
-
-        $placemark->point = [$placemark->latitude, $placemark->longitude];
-
-        return $placemark;
-    }
-
-    /**
      * @param UpdatePlacemarkRequest $request
      * @param Placemark $placemark
      * @return Placemark

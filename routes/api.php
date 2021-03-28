@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\API\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,3 +24,15 @@ Route::apiResources([
     'tags'       => TagController::class,
     //'posts' => PostController::class,
 ]);
+
+Route::group(['middleware' => 'auth:sanctum', 'Traveller' => 'API', 'prefix' => 'personal'], function () {
+    Route::apiResources([
+        'reviews' => TravellerReviewController::class
+    ]);
+});
+
+Route::get('/login', [LoginController::class, 'login']);
+Route::get('/login/{provider}', [LoginController::class, 'login']);
+
+//Route::post('/register', [AuthController::class, 'register']);
+//Route::post('/token', [AuthController::class, 'token']);
