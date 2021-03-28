@@ -27,7 +27,7 @@
                         @foreach($placemarks as $k => $placemark)
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
-                                <td>{{$placemark->name}}</td>
+                                <td><a href="{{ route('placemark_detail', ['id' => $placemark->id]) }}"></a>{{$placemark->name}}</td>
                                 <td>{{\App\Models\Placemark::TYPES_NAMES[$placemark->type]}}</td>
                                 <td>{{$placemark->address}}</td>
                                 <td>{{$placemark->created_at}}</td>
