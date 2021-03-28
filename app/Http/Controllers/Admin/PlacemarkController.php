@@ -67,7 +67,7 @@ class PlacemarkController extends Controller
     {
         $placemark->load(['images', 'tags']);
 
-        return view('admin.placemark.create', ['placemark' => $placemark, 'types' => Placemark::TYPES_NAMES]);
+        return view('admin.placemark.detail', ['placemark' => $placemark, 'types' => Placemark::TYPES_NAMES]);
     }
 
     /**
