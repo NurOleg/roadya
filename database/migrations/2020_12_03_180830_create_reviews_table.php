@@ -21,7 +21,7 @@ class CreateReviewsTable extends Migration
             //$table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignUuid('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('placemark_id')->constrained()->onDelete('cascade');
         });
     }

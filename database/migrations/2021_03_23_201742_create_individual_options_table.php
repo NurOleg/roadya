@@ -23,7 +23,7 @@ class CreateIndividualOptionsTable extends Migration
             $table->string('post_address')->nullable(false);
             $table->string('kpp')->nullable(false);
             $table->string('personal_account')->nullable(false);
-            $table->unsignedBigInteger('user_id');
+            $table->uuid('user_id');
         });
 
         Schema::table('individual_options', function (Blueprint $table) {

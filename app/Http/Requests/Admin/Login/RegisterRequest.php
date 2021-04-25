@@ -38,6 +38,7 @@ class RegisterRequest extends FormRequest
                 'kpp'              => ['required', 'string', 'min:10'],
                 'bik'              => ['required', 'string', 'min:10'],
                 'personal_account' => ['required', 'string', 'min:10'],
+                'from_user'        => ['string'],
             ]
         );
     }

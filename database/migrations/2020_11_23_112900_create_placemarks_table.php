@@ -32,7 +32,7 @@ class CreatePlacemarksTable extends Migration
 
             $table->spatialIndex('point');
 
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignUuid('user_id')->constrained()->onDelete('cascade');
 
         });
     }

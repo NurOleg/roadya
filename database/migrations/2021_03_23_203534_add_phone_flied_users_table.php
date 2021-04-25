@@ -16,6 +16,7 @@ class AddPhoneFliedUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('phone');
             $table->string('surname')->nullable();
+            $table->string('patronymic')->nullable();
         });
     }
 

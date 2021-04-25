@@ -59,6 +59,9 @@
                                         <form class="" method="post" action="{{ route('register') }}">
                                             @csrf
                                             <input type="hidden" name="type" value="individual">
+                                            @if(request()->query('from_user'))
+                                                <input type="hidden" name="from_user" value="{{ request()->query('from_user') }}">
+                                            @endif
                                             <div class="mb-4 form-group">
                                                 <label for="name" class="">Имя</label>
                                                 <input name="name" id="name" placeholder="Full name" type="text"
@@ -147,6 +150,9 @@
                                         <form class="" method="post" action="{{ route('register') }}">
                                             @csrf
                                             <input type="hidden" name="type" value="company">
+                                            @if(request()->query('from_user'))
+                                                <input type="hidden" name="from_user" value="{{ request()->query('from_user') }}">
+                                            @endif
                                             <div class="mb-4 form-group">
                                                 <label for="name" class="">Имя</label>
                                                 <input name="name" id="name" placeholder="Full name" type="text"

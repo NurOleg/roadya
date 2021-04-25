@@ -20,6 +20,10 @@ class LoginService
         $data = $request->all();
         $data['password'] = bcrypt($request->get('password'));
 
+        if ($request->query('from_user')) {
+            $data['from_user'] = $request->query('from_user');
+        }
+
         $user = User::create($data);
 
         if ($request->get('type') === User::IP_TYPE) {

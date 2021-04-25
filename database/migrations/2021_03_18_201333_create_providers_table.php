@@ -17,7 +17,7 @@ class CreateProvidersTable extends Migration
             $table->id();
             $table->string('provider');
             $table->string('provider_id');
-            $table->bigInteger('user_id')->unsigned();
+            $table->uuid('user_id');
             $table->string('avatar')->nullable();
             $table->timestamps();
         });
