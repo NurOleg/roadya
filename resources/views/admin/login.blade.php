@@ -79,7 +79,7 @@
                                         class="form-control"
                                     />
                                 </div>
-                                <button class="mb-3 btn btn-primary btn-lg btn-block">
+                                <button class="mb-3 btn btn-warning btn-lg btn-block">
                                     Войти
                                 </button>
                                 <div class="text-center">
