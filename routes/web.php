@@ -24,6 +24,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/login', [LoginController::class, 'login'])->name('login');
     Route::get('/register', [LoginController::class, 'registerForm'])->name('register_form');
     Route::post('/register', [LoginController::class, 'register'])->name('register');
+    Route::view('/establishment', 'admin.establishment')->name('establishment');
 
     Route::group(['middleware' => 'auth', 'namespace' => 'admin'], function () {
         Route::group(['prefix' => 'placemark'], function () {
