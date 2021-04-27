@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PlacemarkController;
+use App\Http\Controllers\Admin\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +32,19 @@ Route::prefix('admin')->group(function () {
             Route::get('/', [PlacemarkController::class, 'index'])->name('placemark_index');
             Route::get('/create', [PlacemarkController::class, 'create'])->name('placemark_create');
             Route::post('/store', [PlacemarkController::class, 'store'])->name('placemark_store');
-            Route::get('/update/{id}', [PlacemarkController::class, 'detail'])->name('placemark_detail');
-            Route::post('/update/{id}', [PlacemarkController::class, 'update'])->name('placemark_update');
-            Route::delete('/delete/{id}', [PlacemarkController::class, 'delete'])->name('placemark_delete');
+            Route::get('/update/{placemark}', [PlacemarkController::class, 'detail'])->name('placemark_detail');
+            Route::post('/update/{placemark}', [PlacemarkController::class, 'update'])->name('placemark_update');
+            Route::delete('/delete/{placemark}', [PlacemarkController::class, 'delete'])->name('placemark_delete');
             Route::get('/tags', [PlacemarkController::class, 'tags']);
+        });
+
+        Route::group(['prefix' => 'service'], function () {
+            Route::get('/', [ServiceController::class, 'index'])->name('service_index');
+            Route::get('/create', [ServiceController::class, 'create'])->name('service_create');
+            Route::post('/store', [ServiceController::class, 'store'])->name('service_store');
+            Route::get('/update/{id}', [ServiceController::class, 'detail'])->name('service_detail');
+            Route::post('/update/{id}', [ServiceController::class, 'update'])->name('service_update');
+            Route::delete('/delete/{id}', [ServiceController::class, 'delete'])->name('service_delete');
         });
     });
 

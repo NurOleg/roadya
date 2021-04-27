@@ -46,11 +46,12 @@
                     <div class="card shadow-none">
                         <div class="card-body">
                             <div class="text-center mb-5">
-                                <svg width="24" height="24" class="d-block m-auto">
-                                    <use xlink:href="#logo-icon"></use>
-                                </svg>
-                                <h4 class="mb-0 mt-3">Good Evening, please log in</h4>
-                                <p class="text-muted">to continue using your account</p>
+                                <img src="{{ asset('logo.png') }}" alt="" width="24" height="24">
+{{--                                <svg width="24" height="24" class="d-block m-auto">--}}
+{{--                                    <use xlink:href="#logo-icon"></use>--}}
+{{--                                </svg>--}}
+                                <h4 class="mb-0 mt-3">Здравствуйте!</h4>
+                                <p class="text-muted">Зарегестрируйтесь, чтобы продолжить.</p>
                             </div>
                             <form class="" action="{{ route('login') }}" method="post">
                                 @csrf

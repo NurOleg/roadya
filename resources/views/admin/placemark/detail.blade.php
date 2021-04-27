@@ -7,13 +7,13 @@
                 <div class="mb-4 card">
                     <div class="card-header">
                         <b>Редактирование заведения - {{ $placemark->name }}</b>
-                        <a href="{{ route('placemark_delete', ['id' => $placemark->id]) }}" class="btn btn-danger" style="float: right">Удалить заведение</a>
+                        <a href="{{ route('placemark_delete', ['placemark' => $placemark->id]) }}" class="btn btn-danger" style="float: right">Удалить заведение</a>
                         @if($errors->any())
                             {!! implode('', $errors->all('<div class="alert alert-danger">:message</div>')) !!}
                         @endif
                     </div>
                     <div class="card-body">
-                        <form class="" method="post" action="{{ route('placemark_update') }}"
+                        <form class="" method="post" action="{{ route('placemark_update', ['placemark' => $placemark->id]) }}"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">

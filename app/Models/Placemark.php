@@ -135,6 +135,14 @@ class Placemark extends Model
     /**
      * @return HasMany
      */
+    public function services(): HasMany
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    /**
+     * @return HasMany
+     */
     public function rating(): HasMany
     {
         return $this

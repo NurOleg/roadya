@@ -5,7 +5,6 @@ namespace App\Models;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -84,5 +83,13 @@ class User extends Authenticatable
     public function placemarks(): HasMany
     {
         return $this->hasMany(Placemark::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function services(): HasMany
+    {
+        return $this->hasMany(Service::class);
     }
 }
