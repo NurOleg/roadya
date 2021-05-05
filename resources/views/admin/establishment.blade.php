@@ -27,7 +27,7 @@
                 <img src="https://avatars.mds.yandex.net/get-altay/1371846/2a00000162de7e7560328fc73d94fff01687/L"
                      alt="establishment image"
                      aria-hidden="true"
-                     class="w-100">
+                     class="w-100 ">
             </div>
             <div class="col col-lg-8">
                 <h2 class="mb-3">Заведение у камина</h2>
